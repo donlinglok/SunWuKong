@@ -1,0 +1,764 @@
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .tips {
+    font-size: 26px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 99999;
+    color: #f75151;
+    font-weight: 600;
+  }
+  body,
+  html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #container {
+    width: 100%;
+    height: 100%;
+    /*background-color: #202344;*/
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+    z-index: 88;
+  }
+
+  #container:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(#f7f7f7 30%, #f4e8ba 60%, #f78651 100%);
+    transform: translate(-50%, -50%);
+  }
+
+  #container .left {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+  }
+
+  #container .right {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+  }
+
+  .SunWuKong {
+    transform: scale(0.4);
+    transform-origin: 50% 50%;
+    position: absolute;
+    bottom: 90px;
+    z-index: 100;
+    /* display: none; */
+    right: -130px;
+    /* display: none; */
+    width: 500px;
+    height: 850px;
+  }
+
+  .head {
+    width: 326px;
+    height: 265px;
+    position: absolute;
+    top: 0;
+    left: 80px;
+    background: url("./SunWuKong.png") no-repeat;
+    background-position: 0px 100%;
+    transform-origin: 50% 100%;
+    z-index: 111;
+  }
+
+  .body {
+    position: absolute;
+    top: 193px;
+    left: 158px;
+    width: 135px;
+    height: 298px;
+    background: url("./SunWuKong.png") no-repeat;
+    background-position: -1086px 0px;
+    z-index: 777;
+  }
+
+  .necktie {
+    position: absolute;
+    top: 228px;
+    left: 138px;
+    width: 123px;
+    height: 158px;
+    background: url("./SunWuKong.png") no-repeat;
+    background-position: -1498px 0px;
+    z-index: 888;
+  }
+
+  .leftArm {
+    position: absolute;
+    width: 220px;
+    height: 460px;
+    top: 281px;
+    left: 192px;
+    transform-origin: 0 0;
+    z-index: 222;
+  }
+
+  .leftTopArm {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 220px;
+    height: 156px;
+    background: url("./SunWuKong.png") no-repeat;
+    background-position: -1726px 0px;
+    z-index: 222;
+    transform-origin: 0 0;
+  }
+
+  .leftElbow {
+    position: absolute;
+    top: 96px;
+    left: 110px;
+    width: 92px;
+    height: 237px;
+    z-index: 222;
+    transform-origin: 74px 15px;
+  }
+
+  .leftBottomArm {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 92px;
+    height: 160px;
+    background: url("./SunWuKong.png") no-repeat;
+    background-position: -314px 0px;
+    z-index: 222;
+    transform-origin: 74px 15px;
+  }
+
+  .leftHand {
+    position: absolute;
+    top: 120px;
+    left: -64px;
+    width: 87px;
+    height: 77px;
+    background: url("./SunWuKong.png") no-repeat;
+    background-position: -1947px 0px;
+    z-index: 221;
+    transform-origin: 100% 0%;
+  }
+
+  .belt {
+    position: absolute;
+    top: -120px;
+    left: -100px;
+    width: 479px;
+    height: 630px;
+    background: url(./SunWuKong.png) no-repeat;
+    background-position: -408px 0px;
+    z-index: 998;
+    transform-origin: 50% 50%;
+    transform: scale(0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .belt p {
+    writing-mode: vertical-rl;
+    color: rgba(223, 190, 106, 0.8);
+    transform: rotate(45deg);
+    writing-mode: vertical-rl;
+    color: rgb(246 209 117);
+    transform: rotate(37deg);
+    /* margin: auto auto; */
+    font-size: 14px;
+    letter-spacing: 20px;
+  }
+
+  .rightArm {
+    position: absolute;
+    width: 220px;
+    height: 460px;
+    top: 273px;
+    left: 122px;
+    transform-origin: 50% 0%;
+    z-index: 999;
+  }
+
+  .rightTopArm {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 130px;
+    height: 232px;
+    background: url(./SunWuKong.png) no-repeat;
+    background-position: -593px 95%;
+    z-index: 999;
+    transform-origin: 100% 0%;
+  }
+
+  .rightElbow {
+    position: absolute;
+    top: 102px;
+    left: -159px;
+    width: 237px;
+    height: 92px;
+    z-index: 999;
+    transform-origin: 223px 78px;
+  }
+
+  .rightBottomArm {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 157px;
+    height: 100px;
+    background: url(./SunWuKong.png) no-repeat;
+    background-position: -156px 0px;
+    z-index: 999;
+    transform-origin: 223px 78px;
+  }
+
+  .rightHand {
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    width: 94px;
+    height: 61px;
+    background: url(./SunWuKong.png) no-repeat;
+    background-position: -992px 0px;
+    z-index: 998;
+    transform-origin: 60px 0%;
+  }
+
+  .leftLeg {
+    position: absolute;
+    top: 486px;
+    left: 72px;
+    width: 150px;
+    height: 400px;
+    z-index: 555;
+    transform-origin: 100% 0;
+  }
+
+  .leftTopLeg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 150px;
+    height: 184px;
+    background: url(./SunWuKong.png) no-repeat;
+    background-position: -1223px 0px;
+    z-index: 555;
+    transform-origin: 100% 0;
+  }
+
+  .leftLegElbow {
+    position: absolute;
+    top: 128px;
+    left: 2px;
+    width: 124px;
+    z-index: 444;
+    height: 300px;
+    transform-origin: 15px 15px;
+  }
+
+  .leftBottomLeg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 124px;
+    height: 190px;
+    background: url(./SunWuKong.png) no-repeat;
+    background-position: -1373px 0px;
+    z-index: 444;
+    transform-origin: 0% 0%;
+  }
+
+  .leftBottomFoot {
+    position: absolute;
+    top: 156px;
+    left: 36px;
+    width: 104px;
+    height: 105px;
+    background: url(./SunWuKong.png) no-repeat;
+    background-position: -887px 0px;
+    transform-origin: 50% 0%;
+  }
+
+  .rightLeg {
+    position: absolute;
+    top: 497px;
+    left: 200px;
+    width: 100px;
+    height: 400px;
+    z-index: 555;
+    transform-origin: 50% 0;
+  }
+
+  .rightTopLeg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 92px;
+    height: 208px;
+    background: url(./SunWuKong.png) no-repeat;
+    background-position: -499px 91%;
+    z-index: 555;
+    transform-origin: 70% 0%;
+  }
+
+  .rightLegElbow {
+    position: absolute;
+    top: 162px;
+    left: 20px;
+    width: 124px;
+    z-index: 444;
+    height: 300px;
+    transform-origin: 15px 15px;
+  }
+
+  .rightBottomLeg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 177px;
+    height: 148px;
+    background: url(./SunWuKong.png) no-repeat;
+    background-position: -724px 84%;
+    z-index: 444;
+    transform-origin: 0% 0%;
+  }
+
+  .rightBottomFoot {
+    position: absolute;
+    top: 104px;
+    left: 106px;
+    width: 104px;
+    height: 105px;
+    background: url(./SunWuKong.png) no-repeat;
+    background-position: -887px 0px;
+    transform-origin: 50% 0%;
+  }
+
+  .trousers {
+    position: absolute;
+    top: 433px;
+    left: 140px;
+    width: 172px;
+    height: 198px;
+    background: url(./SunWuKong.png) no-repeat;
+    background-position: -324px 90%;
+    z-index: 666;
+    transform-origin: 50% 0%;
+  }
+
+  .goldenCudgel {
+    position: absolute;
+    top: 429px;
+    left: 140px;
+    width: 155px;
+    height: 344px;
+    background: url(./SunWuKong.png) no-repeat;
+    background-position: 0px 0px;
+    z-index: 888;
+    transform-origin: 0% 0%;
+  }
+
+  .mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    z-index: 99999999;
+  }
+
+  .mask .box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mask .box img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+</style>
+
+
+<div class="tips">
+  <div>中国皮影</div>
+  <span>用代码弘扬中国传统文化</span>
+</div>
+<div id="container">
+  <img src="./mountain_left.png" class="left" />
+  <img src="./mountain-right.png" class="right" />
+</div>
+<div class="SunWuKong">
+  <div class="head"></div>
+  <div class="body"></div>
+  <div class="necktie"></div>
+  <div class="leftArm">
+    <div class="leftTopArm"></div>
+    <div class="leftElbow">
+      <div class="leftBottomArm"></div>
+      <div class="leftHand"></div>
+    </div>
+  </div>
+  <div class="rightArm">
+    <div class="rightTopArm"></div>
+    <div class="rightElbow">
+      <div class="rightBottomArm"></div>
+      <div class="rightHand"></div>
+    </div>
+  </div>
+  <div class="trousers"></div>
+  <div class="belt">
+    <p>如意金箍棒</p>
+  </div>
+  <div class="leftLeg">
+    <div class="leftTopLeg"></div>
+    <div class="leftLegElbow">
+      <div class="leftBottomLeg"></div>
+      <div class="leftBottomFoot"></div>
+    </div>
+  </div>
+  <div class="rightLeg">
+    <div class="rightTopLeg"></div>
+    <div class="rightLegElbow">
+      <div class="rightBottomLeg"></div>
+      <div class="rightBottomFoot"></div>
+    </div>
+  </div>
+
+  <div class="goldenCudgel"></div>
+</div>
+
+<div class="mask">
+  <div class="box">
+    <img
+      src="data:image/png;base64,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"
+      alt="图片Base64编码"
+      style="max-width: 90%; max-height: 2000px"
+    />
+    <div>点击开始播放</div>
+    <div>注意声音，有背景音乐，音乐播放5s后动画开始</div>
+  </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+  // 坐着出场
+  function exit() {
+    TweenMax.to(".head", 1, { rotation: -45, top: -50 });
+    var tl = new TimelineMax();
+    tl.add(
+      [
+        TweenMax.to(".leftElbow", 0.5, { rotation: 30 }),
+        TweenMax.to(".leftArm", 0.5, { rotation: 120 }),
+        TweenMax.to(".leftElbow", 0.5, { rotation: 40 }),
+        TweenMax.to(".leftHand", 0.2, { rotation: 10 }),
+        TweenMax.to(".leftHand", 0.2, { rotation: 0 }),
+        TweenMax.to(".leftHand", 0.2, { rotation: 10 }),
+        TweenMax.to(".leftElbow", 0.5, { rotation: 20 }),
+        TweenMax.to(".leftArm", 0.5, { rotation: 0 }),
+        TweenMax.to(".leftElbow", 0.5, { rotation: 0 }),
+        TweenMax.to(".rightElbow", 0.5, { rotation: 50 }),
+        TweenMax.to(".rightArm", 0.5, { rotation: 40 }),
+        TweenMax.to(".rightHand", 0.2, { rotation: 15 }),
+        TweenMax.to(".rightHand", 0.2, { rotation: 0 }),
+        TweenMax.to(".rightHand", 0.2, { rotation: 15 }),
+        TweenMax.to(".rightHand", 0.2, { rotation: 0 }),
+        TweenMax.to(".rightHand", 0.5, { rotation: 15 }),
+        TweenMax.to(".belt", 1.5, { scale: 1 }),
+        TweenMax.to(".rightArm", 0.5, { rotation: 0 }),
+        TweenMax.to(".belt", 0.5, { rotation: -45, left: -146 }, "-=0.5"),
+      ],
+      0,
+      "sequence",
+      0
+    ).addCallback(function () {
+      TweenMax.to(".rightElbow", 0.5, { rotation: 0 });
+      TweenMax.to(".belt", 0.5, { rotation: -90, top: 87, left: -256 });
+      TweenMax.to(".SunWuKong", 0.1, { bottom: 80, rotation: -30 });
+      TweenMax.to(".leftLeg", 0.1, { rotation: 45 });
+      TweenMax.to(".rightLeg", 0.1, { rotation: 45 });
+      TweenMax.to(".leftLegElbow", 0.1, { rotation: -20 });
+      TweenMax.to(".rightLegElbow", 0.1, { rotation: -20 });
+      var tl1 = new TimelineMax();
+      setTimeout(() => {
+        tl1.add(
+          [
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -30,
+              bottom: 100,
+              right: -100,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -50,
+              bottom: 150,
+              right: -50,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -70,
+              bottom: 200,
+              right: 0,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -90,
+              bottom: 250,
+              right: 50,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -110,
+              bottom: 300,
+              right: 100,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -130,
+              bottom: 320,
+              right: 150,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -150,
+              bottom: 340,
+              right: 200,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -170,
+              bottom: 320,
+              right: 250,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -190,
+              bottom: 300,
+              right: 250,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -210,
+              bottom: 250,
+              right: 260,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -230,
+              bottom: 200,
+              right: 270,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -250,
+              bottom: 150,
+              right: 280,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -270,
+              bottom: 50,
+              right: 290,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -290,
+              bottom: 0,
+              right: 300,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -310,
+              bottom: -50,
+              right: 300,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -330,
+              bottom: -100,
+              right: 300,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -350,
+              bottom: -150,
+              right: 300,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -360,
+              bottom: -200,
+              right: 300,
+            }),
+            TweenMax.to(".SunWuKong", 0.1, {
+              rotation: -380,
+              bottom: -250,
+              right: 300,
+            }),
+          ],
+          0,
+          "sequence",
+          0
+        );
+        tl1.add(
+          [
+            TweenMax.to(".rightArm", 0.1, { rotation: -30 }),
+            TweenMax.to(".belt", 0.1, { rotation: -120, top: 200, left: -140 }),
+            TweenMax.to(".leftArm", 0.1, { rotation: 120 }),
+          ],
+          0.4
+        );
+        tl1.add(
+          [
+            TweenMax.to(".leftLeg", 0.5, { rotation: 60 }),
+            TweenMax.to(".leftLegElbow", 0.5, { rotation: 60 }),
+            TweenMax.to(".rightLeg", 0.5, { rotation: -60 }),
+            TweenMax.to(".rightLegElbow", 0.5, { rotation: 35 }),
+          ],
+          0.2
+        );
+        tl1.add(
+          [
+            TweenMax.to(".leftLeg", 0.5, { rotation: 45 }),
+            TweenMax.to(".leftLegElbow", 0.5, { rotation: -15 }),
+            TweenMax.to(".rightLeg", 0.5, { rotation: 45 }),
+            TweenMax.to(".rightLegElbow", 0.5, { rotation: -15 }),
+          ],
+          1.2
+        );
+        tl1.add(
+          [
+            TweenMax.to(".rightArm", 0.1, { rotation: -70 }),
+            TweenMax.to(".belt", 0.1, { rotation: -180, top: 180, left: 90 }),
+          ],
+          1
+        );
+        tl1
+          .add(
+            [
+              TweenMax.to(".SunWuKong", 0.5, {
+                rotation: -352,
+                bottom: -200,
+                right: 300,
+              }),
+              TweenMax.to(".leftLeg", 0.5, { rotation: -35 }),
+              TweenMax.to(".leftLegElbow", 0.5, { rotation: 20 }),
+              TweenMax.to(".rightLeg", 0.5, { rotation: -20 }),
+              TweenMax.to(".rightLegElbow", 0.5, { rotation: 60 }),
+              TweenMax.to(".rightBottomFoot", 0.5, { rotation: -20 }),
+            ],
+            2.5
+          )
+          .addCallback(function () {
+            var tl2 = new TimelineMax();
+            tl2.add(
+              [
+                TweenMax.to(".head", 0, { zIndex: 223 }),
+                TweenMax.to(".leftElbow", 0.5, { rotation: 40 }),
+                TweenMax.to(".leftArm", 0.5, { rotation: 150 }),
+                TweenMax.to(".leftArm", 0.1, { rotation: 130 }),
+                TweenMax.to(".leftArm", 0.1, { rotation: 150 }),
+                TweenMax.to(".leftArm", 0.1, { rotation: 130 }),
+                TweenMax.to(".leftArm", 0.1, { rotation: 150 }),
+                TweenMax.to(".leftArm", 0.5, { rotation: 120 }),
+                TweenMax.to(".leftElbow", 0.5, { rotation: -30 }),
+                TweenMax.to(".head", 0.6, { rotation: -15, top: -10 }),
+                TweenMax.to(".leftHand", 1, { rotation: -40 }),
+              ],
+              0,
+              "sequence",
+              0
+            );
+            setTimeout(() => {
+              var tl3 = new TimelineMax();
+              tl3
+                .to(".rightLeg", 0.5, { rotation: -25 })
+                .to(".rightBottomFoot", 0.5, { rotation: -45 }, "-=0.5");
+              tl3
+                .to(".rightLeg", 0.5, { rotation: -20 })
+                .to(".rightBottomFoot", 0.5, { rotation: -20 }, "-=0.5")
+                .to(".leftLegElbow", 0.5, { rotation: 40 }, "-=0.8")
+                .to(".leftBottomFoot", 0.5, { rotation: 20 }, "-=0.5");
+              tl3.to(".leftLeg", 0.5, { rotation: -40 }, "-=0.5");
+              tl3.to(".SunWuKong", 0.5, { right: 280 }, "-=0.3");
+              tl3
+                .to(".leftLeg", 0.5, { rotation: -35 })
+                .to(".leftBottomFoot", 0.5, { rotation: 0 }, "-=0.5")
+                .to(".leftArm", 2, { rotation: 0 }, "-=1")
+                .to(".leftElbow", 0.5, { rotation: 20 }, "-=0.8")
+                .to(".leftHand", 0.5, { rotation: -20 }, "-=1")
+                .to(".rightArm", 0.5, { rotation: -90 })
+                .to(".belt", 0.2, { zIndex: 776, top: 170, left: 130 }, "-=0.5")
+                .to(".rightArm", 0.5, { rotation: -70 })
+                .to(".rightArm", 0.5, { zIndex: 222 }, "-=0.5")
+                .to(".belt", 0.2, { zIndex: 333, top: 198, left: 64 }, "-=0.5")
+                .to(".belt", 0.5, { rotation: -30, top: -28, left: -444 })
+                .to(".leftArm", 0.5, { rotation: 140 }, "-=0.5")
+                .to(".leftElbow", 0.5, { rotation: -60 }, "-=0.5")
+                .to(".belt", 6, { rotation: 720 * 3 })
+                .to(".belt", 0.5, { top: -317, left: -290 }, "-=5")
+                .to(".leftArm", 0.5, { rotation: 180 }, "-=5")
+                .to(".leftElbow", 0.5, { rotation: -40 }, "-=5")
+                .to(".leftHand", 0.5, { rotation: -30 }, "-=5")
+                .to(".belt", 0.5, { top: -34, left: -444 }, "-=4.5")
+                .to(".leftArm", 0.5, { rotation: 140 }, "-=4.5")
+                .to(".leftElbow", 0.5, { rotation: -60 }, "-=4.5")
+                .to(".leftHand", 0.5, { rotation: -20 }, "-=4.5")
+                .to(".belt", 12, { rotation: 720 * 3 * 3 }, "-=3.5")
+                .to(".belt", 0.5, { top: -317, left: -290 }, "-=12")
+                .to(".leftArm", 0.5, { rotation: 180 }, "-=12")
+                .to(".leftElbow", 0.5, { rotation: -40 }, "-=12")
+                .to(".belt", 0.5, { top: -34, left: -444 }, "-=10.5")
+                .to(".leftArm", 0.5, { rotation: 140 }, "-=10.5")
+                .to(".leftElbow", 0.5, { rotation: -60 }, "-=10.5")
+                .to(".leftArm", 0.5, { rotation: 160 }, "-=8.5")
+                .to(".leftHand", 0.5, { rotation: -60 }, "-=8.5")
+                .to(".belt", 0.5, { top: -1000, left: -900 }, "-=8.5")
+                .to(".belt", 0.5, { top: -500, left: -964 }, "-=8")
+                .to(".belt", 0.5, { top: -300, left: -1100 }, "-=7.5")
+                .to(".belt", 0.5, { top: -100, left: -1100 }, "-=7.5")
+                .to(
+                  ".belt",
+                  2,
+                  {
+                    top: 350,
+                    left: -1100,
+                    rotation: 720 * 3 * 2 + 315 * 2 + 45,
+                  },
+                  "-=7.5"
+                )
+                .to(".leftElbow", 0.5, { rotation: 30 }, "-=7.5")
+                .to(".leftArm", 0.5, { rotation: 98 }, "-=7.5")
+                .to(".leftElbow", 0.5, { rotation: 60 }, "-=7.5")
+                .to(".leftHand", 0.5, { rotation: 20, rotationY: -180 }, "-=6")
+                .to(".head", 1, { rotation: -48, top: -46 }, "-=5")
+                .to(".head", 1, { rotation: -25, top: -20 }, "-=4")
+                .to(".belt", 5, { scale: 2, top: -70, left: -1088 }, "-=3.5");
+            }, 5000);
+          }, "-=0");
+      }, 400);
+    }, "-=0");
+  }
+
+  $(".mask .box").on("click", function () {
+    $(".mask").hide(1000);
+    var player = document.createElement("audio");
+    player.src = "./bg.mp3";
+    player.play();
+    console.log("aaa")
+    setTimeout(function () {
+    console.log("bbb")
+      exit();
+    }, 5000);
+  });
+</script>
